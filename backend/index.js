@@ -20,7 +20,7 @@ connection();
 // Routes
 app.use("/api/v1/auth/", userRoutes);
 app.use("/api/v1/", blogRoutes);
-require("../frontend/build");
+
 
 // Static Path
 app.use(express.static(path.join(__dirname, "../frontend/build")));
