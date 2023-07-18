@@ -15,6 +15,7 @@ import { useEffect, useState } from "react";
 import BlogCard from "../components/BlogCard";
 import { AiOutlineSearch } from "react-icons/ai";
 import Skleton from "../components/Skleton";
+import { Link } from "react-router-dom";
 
 export default function Blogs() {
   const toast = useToast();
@@ -92,7 +93,15 @@ export default function Blogs() {
             fontWeight={"bold"}
             color={"gray.700"}
           >
-            {loggedIn ? "Thank You For Joining Us" : "Login To Join Us"}
+            {loggedIn ? (
+              "Thank You For Joining Us"
+            ) : (
+              <>
+                <Link style={{ textDecoration: "underline" }} to={"/login"}>
+                  Login to join us
+                </Link>
+              </>
+            )}
           </chakra.h1>
           <chakra.h2
             margin={"auto"}

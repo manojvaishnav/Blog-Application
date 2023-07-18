@@ -98,88 +98,96 @@ const MyBlogs = () => {
         </Box>
       ) : (
         <>
-          {blogs.map((value, index) => {
-            return (
-              <>
-                <Container maxW={"5xl"} py={12}>
-                  <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
-                    <Flex>
-                      <Image
-                        rounded={"md"}
-                        alt={"feature image"}
-                        src={`data:image/png;base64,${value.image}`}
-                        objectFit={"fill"}
-                      />
-                    </Flex>
-                    <Stack spacing={4}>
-                      <Text
-                        textTransform={"uppercase"}
-                        color={"blue.400"}
-                        fontWeight={600}
-                        fontSize={"sm"}
-                        bg={"blue.50"}
-                        p={2}
-                        alignSelf={"flex-start"}
-                        rounded={"md"}
-                      >
-                        {value.category.map((data, index) => {
-                          return data + ", ";
-                        })}
-                      </Text>
-                      <Heading size={"md"}>{value.title}</Heading>
-                      <Box
-                        color={"gray.500"}
-                        fontSize={"lg"}
-                        maxH={"7em"}
-                        overflowY={"auto"}
-                      >
-                        <Text>{value.description}</Text>
-                      </Box>
-                      <Stack
-                        spacing={4}
-                        divider={<StackDivider borderColor={"gray.100"} />}
-                      >
-                        <Stack direction={"row"} align={"center"}>
-                          <Button
-                            onClick={() => {
-                              handleDelete(value._id);
-                            }}
+          {blogs.length > 0 ? (
+            <>
+              {blogs.map((value, index) => {
+                return (
+                  <>
+                    <Container maxW={"5xl"} py={12}>
+                      <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
+                        <Flex>
+                          <Image
+                            rounded={"md"}
+                            alt={"feature image"}
+                            src={`data:image/png;base64,${value.image}`}
+                            objectFit={"fill"}
+                          />
+                        </Flex>
+                        <Stack spacing={4}>
+                          <Text
+                            textTransform={"uppercase"}
+                            color={"blue.400"}
+                            fontWeight={600}
+                            fontSize={"sm"}
+                            bg={"blue.50"}
+                            p={2}
+                            alignSelf={"flex-start"}
+                            rounded={"md"}
                           >
-                            <Flex
-                              w={8}
-                              h={8}
-                              align={"center"}
-                              justify={"center"}
-                              rounded={"full"}
-                            >
-                              <AiFillDelete fill="red" />
-                            </Flex>
-                            <Text fontWeight={600}>Delete</Text>
-                          </Button>
-                          <Button
-                            onClick={() => {
-                              navigate(`/update?search=${value._id}`);
-                            }}
+                            {value.category.map((data, index) => {
+                              return data + ", ";
+                            })}
+                          </Text>
+                          <Heading size={"md"}>{value.title}</Heading>
+                          <Box
+                            color={"gray.500"}
+                            fontSize={"lg"}
+                            maxH={"7em"}
+                            overflowY={"auto"}
                           >
-                            <Flex
-                              w={8}
-                              h={8}
-                              align={"center"}
-                              justify={"center"}
-                              rounded={"full"}
-                            >
-                              <GrUpdate />
-                            </Flex>
-                            <Text fontWeight={600}>Update</Text>
-                          </Button>
+                            <Text>{value.description}</Text>
+                          </Box>
+                          <Stack
+                            spacing={4}
+                            divider={<StackDivider borderColor={"gray.100"} />}
+                          >
+                            <Stack direction={"row"} align={"center"}>
+                              <Button
+                                onClick={() => {
+                                  handleDelete(value._id);
+                                }}
+                              >
+                                <Flex
+                                  w={8}
+                                  h={8}
+                                  align={"center"}
+                                  justify={"center"}
+                                  rounded={"full"}
+                                >
+                                  <AiFillDelete fill="red" />
+                                </Flex>
+                                <Text fontWeight={600}>Delete</Text>
+                              </Button>
+                              <Button
+                                onClick={() => {
+                                  navigate(`/update?search=${value._id}`);
+                                }}
+                              >
+                                <Flex
+                                  w={8}
+                                  h={8}
+                                  align={"center"}
+                                  justify={"center"}
+                                  rounded={"full"}
+                                >
+                                  <GrUpdate />
+                                </Flex>
+                                <Text fontWeight={600}>Update</Text>
+                              </Button>
+                            </Stack>
+                          </Stack>
                         </Stack>
-                      </Stack>
-                    </Stack>
-                  </SimpleGrid>
-                </Container>
-              </>
-            );
-          })}
+                      </SimpleGrid>
+                    </Container>
+                  </>
+                );
+              })}
+            </>
+          ) : (
+            <Container>
+              <Text>You don't have any blog</Text>
+            </Container>
+          )}
         </>
       )}
     </>

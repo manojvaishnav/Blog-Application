@@ -126,7 +126,7 @@ export default function Navbar() {
                         }
                       />
 
-                      <Box display={{ base: "none", md: "flex" }}>
+                      <Box display={{ base: "flex", md: "flex" }}>
                         <FiChevronDown />
                       </Box>
                     </HStack>
@@ -153,11 +153,6 @@ export default function Navbar() {
                 display={{ base: "none", md: "inline-flex" }}
                 fontSize={"sm"}
                 fontWeight={600}
-                color={"white"}
-                bg={"pink.400"}
-                _hover={{
-                  bg: "pink.300",
-                }}
                 onClick={handleSignIn}
               >
                 Sign In
